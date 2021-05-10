@@ -17,9 +17,6 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var lookDir = position-transform.position;
-        lookDir.z = 0; // keep only the horizontal direction
-
         float xValue = Input.GetAxis("Horizontal");
         float zValue = Input.GetAxis("Vertical");
 
@@ -32,8 +29,6 @@ public class Mover : MonoBehaviour
 
             if(zValue<0)transform.Rotate(0, 0.5f, 0);
             if(zValue>0)transform.Rotate(0, -0.5f, 0);
-
-            transform.rotation = Quaternion.LookRotation(lookDir);
 
             transform.Translate(xValue * Time.deltaTime * xVelocitty, 0, 0);
         }
