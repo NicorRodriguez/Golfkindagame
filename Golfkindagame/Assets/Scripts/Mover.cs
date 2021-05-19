@@ -5,13 +5,12 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     int xVelocitty=10;
-    float smooth = 2.0f;
     float tiltAngle = 30.0f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.Translate(10 *Time.deltaTime, 0, 0);
     }
 
     // Update is called once per frame
@@ -27,10 +26,9 @@ public class Mover : MonoBehaviour
             float tiltAroundZ = zValue * tiltAngle;
             float tiltAroundX = xValue * tiltAngle;
 
-            if(zValue<0)transform.Rotate(0, 0.5f, 0);
-            if(zValue>0)transform.Rotate(0, -0.5f, 0);
-
             transform.Translate(xValue * Time.deltaTime * xVelocitty, 0, 0);
         }
+
+        if(zValue>0)transform.Translate(+0, 0, +0.5f * Time.deltaTime * 20);
     }
 }
